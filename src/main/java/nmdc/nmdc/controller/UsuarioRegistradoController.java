@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import nmdc.nmdc.dto.ChangeContrasena;
 import nmdc.nmdc.model.UsuarioRegistrado;
 import nmdc.nmdc.service.UsuarioRegistradoService;
 
@@ -42,9 +43,8 @@ public UsuarioRegistrado addUsuarioRegistrado(@RequestBody UsuarioRegistrado usu
 }//add
 @PutMapping(path="{UserRegId}")
 public  UsuarioRegistrado updateUsuarioRegistrado(@PathVariable ("UserRegId") Long id, 
-	@RequestParam(required=false) String correo,
-	@RequestParam(required=false) String contrasena) {
-		return service.updateUserReg(id, correo,contrasena);
+	@RequestBody ChangeContrasena changecontrasena) {
+		return service.updateUserReg(id, changecontrasena);
 
 }
 
