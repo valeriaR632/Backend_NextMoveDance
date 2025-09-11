@@ -38,7 +38,7 @@ public UsuarioRegistrado deleteUserReg(Long id) {
 }//delete
 public UsuarioRegistrado addUserReg(UsuarioRegistrado usuarioRegistrado) {
 	Optional<UsuarioRegistrado>userReg=
-	repository.findBycorreo(usuarioRegistrado.getCorreo());
+	repository.findByCorreo(usuarioRegistrado.getCorreo());
 	if(userReg.isEmpty()) {
 		usuarioRegistrado.setContrasena(encoder.encode (usuarioRegistrado.getContrasena()));
 	return repository.save(usuarioRegistrado);
@@ -61,7 +61,7 @@ public UsuarioRegistrado updateUserReg(Long id, ChangeContrasena changecontrasen
 	return null;
 }
 public boolean validateUserReg(UsuarioRegistrado usuarioRegistrado) {
-    Optional<UsuarioRegistrado> userReg = repository.findBycorreo(usuarioRegistrado.getCorreo());
+    Optional<UsuarioRegistrado> userReg = repository.findByCorreo(usuarioRegistrado.getCorreo());
     if (userReg.isPresent()) {
         UsuarioRegistrado tmpUserReg = userReg.get();
         if (encoder.matches(usuarioRegistrado.getContrasena(), tmpUserReg.getContrasena())) {

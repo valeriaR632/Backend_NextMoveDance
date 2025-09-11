@@ -23,5 +23,4 @@ public class NmdcApplication {
 		return registrationBean;
 
 	}
-
 }

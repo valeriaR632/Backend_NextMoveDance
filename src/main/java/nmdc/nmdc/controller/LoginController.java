@@ -19,7 +19,7 @@ import nmdc.nmdc.model.UsuarioRegistrado;
 import nmdc.nmdc.service.UsuarioRegistradoService;
 
 @RestController
-@RequestMapping(path="api/ai/login")//http://localhost:8080/api/login/
+@RequestMapping(path="/api/ai/login/")//http://localhost:8080/api/ai/login/
 public class LoginController {
 	
 	private final UsuarioRegistradoService service;
