@@ -7,56 +7,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nmdc.nmdc.model.Clases;
-import nmdc.nmdc.model.Usuario;
 import nmdc.nmdc.repository.ClasesRepository;
+
 @Service
 public class ClasesService {
-private ClasesRepository repository;
+private  ClasesRepository repository;
+
 @Autowired
-public ClasesService(ClasesRepository repository) {
+public ClasesService (ClasesRepository repository) {
 	this.repository=repository;
-	
 }//constructor
-public List<Clases>getClas(){
+public List <Clases>getClas(){
 	return repository.findAll();
-}//getUser
+}//getuser
 public Clases getClas(Long id) {
 	return repository.findById(id).orElseThrow(
-	()->new IllegalArgumentException("La clase con el Id[ "+ id
-					+"] no existe")
-			);
-}//get clas
+			()->new IllegalArgumentException("La clase  con el Id[ "+ id
+					+"] no existe"));
+}//getclas
 public Clases deleteClas(Long id) {
-	Clases tmpCl=null;
-	
-		if(repository.existsById(id)) {
-			tmpCl=repository.findById(id).get();
-			repository.deleteById(id);
+	Clases tmpcl=null;
+	if(repository.existsById(id)) {
+		tmpcl=repository.findById(id).get();
+		repository.deleteById(id);
 	}
-	return tmpCl;
-}
-public Clases addClas(Clases clases) {
-	Optional<Clases> cl=
+	return tmpcl;
+}//delete
+public Clases addclas(Clases clases) {
+	Optional<Clases> clas=
 	repository.findByNombreClases(clases.getNombreClases());
-	if(cl.isEmpty()) {
+	if(clas.isEmpty()) {
 		repository.save(clases);
 	}else {
 		clases=null;
 	}//else
 	return clases;
-}//addclases
-public Clases updateClas(Long id, String nombreClases, String ededAdmision, String horario) {
-	Clases tmpCl=null;
-		if(repository.existsById(id)) {
-			Clases cl=repository.findById(id).get();
-			
-			if(nombreClases!=null)cl.setNombreClases(nombreClases);
-			if(ededAdmision!=null)cl.setEdedAdmision(ededAdmision);
-			if(horario!=null)cl.setHorario(horario);
-			repository.save(cl);
-			tmpCl=cl;
-	}//if
-	return tmpCl;
-}//update
+
+}//add
+public Clases updateclas(Long id, String imagen, String nombreClases, String edadAdmision, String maestro,
+		String horario, String claseSuelta, String inscripcion) {
+	Clases tmpcl=null;
+	if(repository.existsById(id)) {
+		Clases cl=repository.findById(id).get();
+		if(imagen!=null)cl.setImagen(imagen);
+		if(nombreClases!=null)cl.setNombreClases(nombreClases);
+		if(edadAdmision!=null)cl.setEdadAdmision(edadAdmision);
+		if(maestro!=null)cl.setMaestro(maestro);
+		if(horario!=null)cl.setHorario(horario);
+		if(claseSuelta!=null)cl.setClaseSuelta(claseSuelta);
+		if(inscripcion!=null)cl.setInscripcion(inscripcion);
+		repository.save(cl);
+		 tmpcl=cl;
+	}
+	
+	return tmpcl;
+}
+
+
 
 }

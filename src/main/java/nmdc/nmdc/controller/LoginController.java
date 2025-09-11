@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import nmdc.nmdc.config.JwtFilter;
 import nmdc.nmdc.dto.Token;
 import nmdc.nmdc.model.UsuarioRegistrado;
 import nmdc.nmdc.service.UsuarioRegistradoService;
 
 @RestController
-@RequestMapping(path="api/ai/logi")//http://localhost:8080/api/login/
+@RequestMapping(path="api/ai/login")//http://localhost:8080/api/login/
 public class LoginController {
 	
 	private final UsuarioRegistradoService service;
@@ -31,7 +32,7 @@ public class LoginController {
     public Token loginUserReg(@RequestBody UsuarioRegistrado usuarioRegistrado) throws ServletException {
         if (service.validateUserReg(usuarioRegistrado)) {
             // Aquí podrías generar un JWT en vez del correo
-            return new Token(usuarioRegistrado.getCorreo());
+            return new Token( generateToken(usuarioRegistrado.getCorreo()));
         }
         throw new ServletException("Nombre o contraseña incorrecta");
     }//loginuser

@@ -10,5 +10,4 @@ import nmdc.nmdc.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	Optional<Usuario>findByNombre(String nombre);
-
 }

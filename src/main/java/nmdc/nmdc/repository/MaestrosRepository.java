@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import nmdc.nmdc.model.Maestros;
-import nmdc.nmdc.model.Usuario;
 
 
 @Repository

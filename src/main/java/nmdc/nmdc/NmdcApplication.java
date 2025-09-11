@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
+import nmdc.nmdc.config.JwtFilter;
+
 @SpringBootApplication
 public class NmdcApplication {
 
@@ -12,13 +14,14 @@ public class NmdcApplication {
 		SpringApplication.run(NmdcApplication.class, args);
 	}
 	@Bean
-	public FilterRegistrationBean<JwtFilter>jwFilter(){
-		FilterRegistrationBean<JwtFilter>registrationBean=
+	public FilterRegistrationBean<JwtFilter> jwtFilter(){
+		FilterRegistrationBean<JwtFilter> registrationBean =
 				new FilterRegistrationBean<JwtFilter>();
-		registrationBean.setFilter(new JwFilter));
+		registrationBean.setFilter(new JwtFilter());
+		registrationBean.addUrlPatterns("/api/usuarioRegitrado/*");//agrega un aptron de loq ue queire filtrar, todo lo que diga /api/prosutos
 		registrationBean.addUrlPatterns("/api/clases/*");
-		registrationBean.addUrlPatterns("/api/usuariosRegistrados/*");
 		return registrationBean;
+
 	}
 
 }

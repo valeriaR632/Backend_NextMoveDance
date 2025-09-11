@@ -11,5 +11,6 @@ import nmdc.nmdc.model.Pago;
 
 @Repository
 public interface PagoRepository extends JpaRepository<Pago, Long> {
-Optional<Pago>findByFechaPago(String fechaPago);
+
+Optional<Pago> findByFechaPago(String fechaPago);
 }

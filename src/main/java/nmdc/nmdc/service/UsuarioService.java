@@ -1,5 +1,4 @@
 package nmdc.nmdc.service;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +56,5 @@ public class UsuarioService {
 				tmpUser=use;
 		}//foreach
 		return tmpUser;
-	}//update
-
+	}
 }
