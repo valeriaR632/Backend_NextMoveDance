@@ -3,6 +3,7 @@ import java.util.List;
 
 import nmdc.nmdc.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import nmdc.nmdc.model.Usuario;
 
 @RestController
 @RequestMapping(path="/api/usuario/")//http:localhost:8080/api/usuario/
+@CrossOrigin(origins = "http://127.0.0.1:5502")
 public class UsuarioController {
 	private final UsuarioService service;
 	@Autowired
