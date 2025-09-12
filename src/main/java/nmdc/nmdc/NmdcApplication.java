@@ -13,7 +13,7 @@ public class NmdcApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NmdcApplication.class, args);
 	}
-	@Bean
+	/*@Bean
 	public FilterRegistrationBean<JwtFilter> jwtFilter(){
 		FilterRegistrationBean<JwtFilter> registrationBean =
 				new FilterRegistrationBean<JwtFilter>();
@@ -22,5 +22,5 @@ public class NmdcApplication {
 		registrationBean.addUrlPatterns("/api/clases/*");
 		return registrationBean;
 
-	}
+	}*/
 }
